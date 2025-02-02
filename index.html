@@ -23,40 +23,12 @@
         <p>Auf dieser Seite findest du alle Informationen zu unserem Minecraft-Server.</p>
         <p><strong>IP-Adresse:</strong> toudward.aternos.me / timmy.maximanu.de</p>
         <p></p>
-
-<h3>Spieler:</h3>
-    <script type="text/javascript">
-    func();
-    var refreshInterval = 5000;
-    setInterval(function(){
-        func();
-    }, refreshInterval);
-    function func(){
-        var ip = "toudward.aternos.me";
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "https://eu.mc-api.net/v3/server/info/" + ip, true);
-        xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4) {
-                        data = JSON.parse(xhr.responseText);
-                        if (data.status) {
-                        	if(data.players.max == 0) {
-					document.getElementById("bar").innerHTML="Offline";
-                        	} else {
-                        		document.getElementById("bar").innerHTML=data.players.online + "/" + data.players.max;
-                                	document.getElementById("bar").style.width = 100*(data.players.online/data.players.max) + "%";
-                        	}
-                        } else {
-				document.getElementById("bar").innerHTML="Offline";
-			}
-                }
-        }
-        xhr.send();
-    }
-    </script>
-    <div class="progress progress-striped active" style="background-color: #373737;">
-    <div class="progress-bar progress-bar-default" role="progressbar" style="width: 0%;" id="bar">0/0</div>
-</div>
-        
+        <h3>Server Status:</h3>
+        <h1 id="motd"></h1>
+        <p id="status">Status: </p>
+        <p id="version">Version: </p>
+        <p id="players_num">Players: </p>
+        <ul id="players_list"></ul>
     </main>
     <footer>
         <p>&copy; 2025 Toudward SMP. Alle Rechte vorbehalten.</p>
