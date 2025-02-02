@@ -45,3 +45,28 @@ function loadWikiPage(term) {
 
 // Load the home page by default
 window.onload = () => loadPage('home');
+
+
+
+
+
+        let url = "example.com";
+        $(document).ready(() => {
+            $.getJSON("https://api.mcsrvstat.us/1/" + url, (status) => {
+                if (status.debug.ping) {
+                    $("#motd").append(status.motd.raw);
+                    $("#status").append("On");
+                    $("#version").append(status.version);
+                    $("#players_num").append(status.players.online + "/" + status.players.max)
+                    $.each(status.players.list, function (index, player) {
+                        $("#players_list").append("<li>" + player + "</li>")
+                    });
+                } else {
+                    $("#motd").append(status.hostname);
+                    $("#status").append("Off");
+                    $("#version").hide();
+                    $("#players_num").hide();
+                }
+                $("body").fadeIn(2000);
+            });
+        });
