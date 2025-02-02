@@ -50,7 +50,7 @@ window.onload = () => loadPage('home');
 
 
 
-        let url = "example.com";
+        let url = "mc.hypixel.net";
         $(document).ready(() => {
             $.getJSON("https://api.mcsrvstat.us/1/" + url, (status) => {
                 if (status.debug.ping) {
